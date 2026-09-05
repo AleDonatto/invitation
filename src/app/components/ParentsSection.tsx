@@ -41,6 +41,10 @@ export default function ParentsSection() {
           <p className="font-cormorant text-xl text-rose-500/60 tracking-wider">
             por ser parte de esta nueva etapa.
           </p>
+
+          <div className="">
+            <img src="./images/padrinos.jpeg" alt="Padrinos" className="mx-auto w-64 md:w-80 rounded-lg shadow-lg" />
+          </div>
         </div>
 
         <div className="flex justify-center">
