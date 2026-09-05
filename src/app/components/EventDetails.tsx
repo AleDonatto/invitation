@@ -14,14 +14,16 @@ export default function EventDetails() {
       date: 'Domingo 28 de junio',
       time: '12:00 p.m',
       location: 'Parroquia de Nuestra Señora de Guadalupe',
-      address: 'Ejido Modelo'
+      address: 'Ejido Modelo',
+      url: 'https://maps.app.goo.gl/JNmPPScBTeoyF4548?g_st=iw'
     },
     reception: {
       title: 'Recepción',
       date: 'Domingo 28 de junio',
       time: '5:00 p.m',
       location: 'Terraza de Chavarro',
-      address: 'Colonia Unidad Deportiva, Tizapán el Alto, Jalisco'
+      address: 'Colonia Unidad Deportiva, Tizapán el Alto, Jalisco',
+      url: 'https://maps.app.goo.gl/HD1ZqcKhdg6xjmd16?g_st=iw'
     }
   }
 
@@ -84,7 +86,8 @@ export default function EventDetails() {
             </div>
 
             <div className="flex justify-center">
-              <button className="group inline-flex items-center gap-2 px-6 py-2 text-rose-400/70 hover:text-rose-600 transition-colors border border-rose-200/30 hover:border-rose-300/50 rounded-full">
+              <button className="group inline-flex items-center gap-2 px-6 py-2 text-rose-400/70 hover:text-rose-600 transition-colors border border-rose-200/30 hover:border-rose-300/50 rounded-full cursor-pointer"
+                onClick={() => window.open(events[activeTab].url, '_blank')}>
                 <MapPin className="w-3.5 h-3.5" />
                 <span className="font-cormorant text-sm tracking-wider">ver ubicación</span>
               </button>

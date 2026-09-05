@@ -38,6 +38,15 @@ export default function ParentsSection() {
           <p className="font-great-vibes text-5xl text-rose-700/80">
             Mis Padrinos
           </p>
+          <p className="font-cormorant text-3xl text-rose-700/80">
+            Alicia Guevara
+          </p>
+          <p className="font-cormorant text-3xl text-rose-700/80">
+            Y
+          </p>
+          <p className="font-cormorant text-3xl text-rose-700/80">
+            Daniel Amigon
+          </p>
           <p className="font-cormorant text-xl text-rose-500/60 tracking-wider">
             por ser parte de esta nueva etapa.
           </p>

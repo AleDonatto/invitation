@@ -96,7 +96,7 @@ export default function Home() {
       {/* <MessageSection /> */}
       <ParentsSection />
       <EventDetails />
-      <ConfirmationForm />
+      {/* <ConfirmationForm /> */}
       <Footer />
     </main>
   );
