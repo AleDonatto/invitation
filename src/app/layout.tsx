@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 import { Great_Vibes, Playfair_Display, Cormorant_Garamond } from 'next/font/google'
 
@@ -26,7 +27,7 @@ const cormorant = Cormorant_Garamond({
 })
 
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es" className={`${greatVibes.variable} ${playfair.variable} ${cormorant.variable}`}>
       <body className="bg-[#faf6f0]">{children}</body>

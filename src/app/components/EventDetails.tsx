@@ -41,7 +41,7 @@ export default function EventDetails() {
 
         {/* Tabs estilo vintage */}
         <div className="flex justify-center gap-2 mb-10">
-          {['church', 'reception'].map((tab) => (
+          {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
