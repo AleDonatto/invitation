@@ -5,7 +5,7 @@ export default function Footer() {
       
       <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
         <div className="flex justify-center">
-          <div className="w-16 h-px bg-rose-300/30" />
+          <div className="w-16 h-px bg-rose-700/30" />
         </div>
         
         <p className="font-great-vibes text-4xl md:text-5xl text-rose-700/70">

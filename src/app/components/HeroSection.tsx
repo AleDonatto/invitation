@@ -1,9 +1,17 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handleMusicToggle = () => {
+    if(!isPlaying) {
+      videoRef.current?.play();
+    }
+  }
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
@@ -25,49 +33,77 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-3xl mx-auto text-center space-y-8">
         {/* Separador decorativo superior */}
+
         <div className="flex items-center justify-center gap-4">
           <div className="w-12 h-px bg-rose-300/50" />
           <div className="text-rose-300/50">✦</div>
           <div className="w-12 h-px bg-rose-300/50" />
         </div>
 
-        <p className="font-cormorant text-2xl md:text-3xl text-rose-600/70 tracking-wider">
-          Queremos compartir contigo una
-        </p>
+        <motion.div 
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }} // se anima una vez al 20% visible
+          transition={{ duration: 0.6, ease: 'linear' }}
+          className=""
+        >
+          <p className="font-cormorant text-2xl md:text-3xl text-rose-600/70 tracking-wider">
+            Queremos compartir contigo una
+          </p>
+          
+          <h1 className="font-great-vibes text-5xl md:text-7xl text-rose-700 leading-none">
+            bendición muy especial:
+          </h1>
+        </motion.div>
         
-        <h1 className="font-great-vibes text-5xl md:text-7xl text-rose-700 leading-none">
-          bendición muy especial:
-        </h1>
+
+        
 
         <div className="space-y-4 mt-8">
-          <p className="font-cormorant text-3xl md:text-4xl text-rose-500/80 tracking-wider">
-            el Bautizo
-          </p>
-          
-          <h2 className="font-great-vibes text-6xl md:text-8xl text-rose-800 leading-none">
-            Sofía Carolina
-          </h2>
-          
-          <p className="font-cormorant text-2xl md:text-3xl text-rose-500/80 tracking-wider">
-            de nuestra hija
-          </p>
-          
-          <p className="font-cormorant text-xl md:text-2xl text-rose-400/70">
-            y primer año
-          </p>
+          <motion.div 
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }} // se anima una vez al 20% visible
+            transition={{ duration: 0.6, ease: 'linear' }}
+            className=""
+          >
+            
+            <p className="font-cormorant text-3xl md:text-4xl text-rose-500/80 tracking-wider my-10">
+              el Bautizo
+            </p>
+            
+            <h2 className="font-great-vibes text-6xl md:text-8xl text-rose-800 leading-none mb-10">
+              Sofía Carolina
+            </h2>
+            
+            <p className="font-cormorant text-2xl md:text-3xl text-rose-500/80 tracking-wider">
+              de nuestra hija
+            </p>
+            
+            <p className="font-cormorant text-xl md:text-2xl text-rose-400/70">
+              y primer año
+            </p>
 
-          {/* Línea decorativa con puntos */}
-          <div className="flex items-center justify-center gap-3 my-4">
-            <div className="w-16 h-px bg-rose-300/30" />
-            <span className="text-rose-300/30 text-sm">✦</span>
-            <div className="w-16 h-px bg-rose-300/30" />
-          </div>
+            {/* Línea decorativa con puntos */}
+            <div className="flex items-center justify-center gap-3 my-4">
+              <div className="w-16 h-px bg-rose-300/30" />
+              <span className="text-rose-300/30 text-sm">✦</span>
+              <div className="w-16 h-px bg-rose-300/30" />
+            </div>
 
-          <p className="font-cormorant text-3xl md:text-4xl text-rose-600/80 tracking-wider">
-            Mendoza Rivera
-          </p>
+            <p className="font-cormorant text-3xl md:text-4xl text-rose-600/80 tracking-wider">
+              Mendoza Rivera
+            </p>
+          </motion.div>
 
-          <div 
+          <motion.div 
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }} // se anima una vez al 20% visible
+            transition={{ duration: 0.6, ease: 'linear' }}
+            className=""
+          >
+            <div 
             className="relative w-full max-w-2xl mx-auto"
             style={{
                 aspectRatio: '1/1', // Mantiene el círculo perfecto
@@ -102,12 +138,17 @@ export default function HeroSection() {
                     </div>
                 </div>
             </div>
+          </motion.div>
+
+          
         </div>
+
+        <video ref={videoRef} src="/videos/music.mp4" className='hidden' onEnded={() => setIsPlaying(false)}></video>
 
         {/* Botón de música con estilo vintage */}
         <button
-          onClick={() => setIsPlaying(!isPlaying)}
-          className="group inline-flex items-center gap-3 px-8 py-3 bg-white/70 hover:bg-white/90 backdrop-blur-sm border border-rose-200/50 rounded-full transition-all duration-300 shadow-sm hover:shadow-md"
+          onClick={() => handleMusicToggle()}
+          className="group cursor-pointer inline-flex items-center gap-3 px-8 py-3 bg-white/70 hover:bg-white/90 backdrop-blur-sm border border-rose-200/50 rounded-full transition-all duration-300 shadow-sm hover:shadow-md"
         >
           <span className="text-rose-400 group-hover:text-rose-500 transition-colors">
             {isPlaying ? '⏸' : '▶'}

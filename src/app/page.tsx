@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import HeroSection from "./components/HeroSection";
 import MessageSection from "./components/MessageSection";
@@ -5,22 +6,22 @@ import EventDetails from "./components/EventDetails";
 import ConfirmationForm from "./components/ConfirmationForm";
 import Footer from "./components/Footer";
 import ParentsSection from "./components/ParentsSection";
+import { motion } from 'framer-motion';
+
 
 export default function Home() {
   return (
      <main className="min-h-screen">
 
-      <div className=" colorful-border">
-        <div className="grid grid-cols-12 mx-10">
-          
-          <div className="col-span-12" style={{
-            backgroundImage: 'url("./images/top.png")',
-            backgroundPosition: 'center',
-            height: '190px',
-            width: '100%',
-            backgroundSize: 'contain',
-          }}></div>
-        </div>
+      <div className="colorful-border">
+        <div className="grid grid-cols-12 mx-2 md:mx-10">
+  <div
+    className="col-span-12 w-full aspect-[16/4] bg-center bg-contain bg-no-repeat"
+    style={{
+      backgroundImage: 'url("/images/top.png")',
+    }}
+  ></div>
+</div>
 
         <div className="grid grid-cols-12 mx-10 pt-10">
           <div style={{
@@ -92,11 +93,14 @@ export default function Home() {
         </div>
       </div>
 
+      
+
       <HeroSection />
+      
       {/* <MessageSection /> */}
       <ParentsSection />
       <EventDetails />
-      {/* <ConfirmationForm /> */}
+      <ConfirmationForm />
       <Footer />
     </main>
   );
