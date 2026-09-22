@@ -1,26 +1,36 @@
-'use client'
-import { useRef, useState } from 'react'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
+"use client";
+import { useRef, useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const handleMusicToggle = () => {
-    if(!isPlaying) {
-      videoRef.current?.play();
+  const handleMusicToggle = async () => {
+    if (!videoRef.current) return;
+
+    if (isPlaying) {
+      videoRef.current?.pause();
+      setIsPlaying(false);
+    } else {
+      try {
+        await videoRef.current?.play();
+        setIsPlaying(true);
+      } catch (error) {
+        console.error("Error playing video:", error);
+      }
     }
-  }
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
       {/* Fondo con textura de papel y degradado */}
       <div className="absolute inset-0  colorful-border" />
-      
+
       {/* Marco decorativo floral */}
       <div className="absolute inset-0 floral-border opacity-30" />
-      
+
       {/* Elementos decorativos de flores (simulados con CSS) */}
       <div className="absolute top-10 left-10 w-32 h-32 opacity-20">
         <div className="absolute top-0 left-0 w-8 h-8 bg-rose-200 rounded-full blur-xl" />
@@ -40,46 +50,42 @@ export default function HeroSection() {
           <div className="w-12 h-px bg-rose-300/50" />
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }} // se anima una vez al 20% visible
-          transition={{ duration: 0.6, ease: 'linear' }}
+          transition={{ duration: 0.6, ease: "linear" }}
           className=""
         >
           <p className="font-cormorant text-2xl md:text-3xl text-rose-600/70 tracking-wider">
             Queremos compartir contigo una
           </p>
-          
+
           <h1 className="font-great-vibes text-5xl md:text-7xl text-rose-700 leading-none">
             bendición muy especial:
           </h1>
         </motion.div>
-        
-
-        
 
         <div className="space-y-4 mt-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }} // se anima una vez al 20% visible
-            transition={{ duration: 0.6, ease: 'linear' }}
+            transition={{ duration: 0.6, ease: "linear" }}
             className=""
           >
-            
             <p className="font-cormorant text-3xl md:text-4xl text-rose-500/80 tracking-wider my-10">
               el Bautizo
             </p>
-            
+
             <h2 className="font-great-vibes text-6xl md:text-8xl text-rose-800 leading-none mb-10">
-              Sofía Carolina
+              Kayleenn Adilene
             </h2>
-            
+
             <p className="font-cormorant text-2xl md:text-3xl text-rose-500/80 tracking-wider">
               de nuestra hija
             </p>
-            
+
             <p className="font-cormorant text-xl md:text-2xl text-rose-400/70">
               y primer año
             </p>
@@ -92,58 +98,68 @@ export default function HeroSection() {
             </div>
 
             <p className="font-cormorant text-3xl md:text-4xl text-rose-600/80 tracking-wider">
-              Mendoza Rivera
+              Felipe Villegas
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }} // se anima una vez al 20% visible
-            transition={{ duration: 0.6, ease: 'linear' }}
+            transition={{ duration: 0.6, ease: "linear" }}
             className=""
           >
-            <div 
-            className="relative w-full max-w-2xl mx-auto"
-            style={{
-                aspectRatio: '1/1', // Mantiene el círculo perfecto
-                width: '100%',
-
-            }}
+            <div
+              className="relative w-full max-w-2xl mx-auto"
+              style={{
+                aspectRatio: "1/1", // Mantiene el círculo perfecto
+                width: "100%",
+              }}
             >
-                <div 
-                    className="absolute inset-0 z-10"
+              <div
+                className="absolute inset-0 z-10"
+                style={{
+                  backgroundImage: 'url("./images/circulo.png")',
+                  backgroundPosition: "center",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                }}
+              />
+
+              {/* Contenedor de la imagen (dentro del marco) */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-full h-full rounded-full overflow-hidden">
+                  <Image
+                    src="/images/hija.jpeg"
+                    alt="Sofía Carolina"
+                    fill
+                    className="object-cover p-[10%] rounded-full shadow-lg"
                     style={{
-                        backgroundImage: 'url("./images/circulo.png")',
-                        backgroundPosition: 'center',
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
+                      objectPosition: "center 10%", // 👈 AQUÍ SE MUEVE LA IMAGEN
                     }}
-                />
-  
-                {/* Contenedor de la imagen (dentro del marco) */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                     <div className="relative w-full h-full rounded-full overflow-hidden">
-                        <Image
-                            src="/images/hija.jpeg"
-                            alt="Sofía Carolina"
-                            fill
-                            className="object-cover p-[10%] rounded-full shadow-lg"
-                            style={{
-                                objectPosition: 'center 10%' // 👈 AQUÍ SE MUEVE LA IMAGEN
-                            }}
-                            sizes="(max-width: 768px) 80vw, 400px"
-                            priority
-                        />
-                    </div>
+                    sizes="(max-width: 768px) 80vw, 400px"
+                    priority
+                  />
                 </div>
+              </div>
             </div>
           </motion.div>
-
-          
         </div>
 
-        <video ref={videoRef} src="/videos/music.mp4" className='hidden' onEnded={() => setIsPlaying(false)}></video>
+        <video
+          ref={videoRef}
+          src="/videos/music.mp4"
+          playsInline
+          preload="auto"
+          onEnded={() => setIsPlaying(false)}
+          style={{
+            position: "absolute",
+            width: "1px",
+            height: "1px",
+            opacity: 0,
+            pointerEvents: "none",
+          }} // Oculta el video
+        ></video>
 
         {/* Botón de música con estilo vintage */}
         <button
@@ -151,7 +167,7 @@ export default function HeroSection() {
           className="group cursor-pointer inline-flex items-center gap-3 px-8 py-3 bg-white/70 hover:bg-white/90 backdrop-blur-sm border border-rose-200/50 rounded-full transition-all duration-300 shadow-sm hover:shadow-md"
         >
           <span className="text-rose-400 group-hover:text-rose-500 transition-colors">
-            {isPlaying ? '⏸' : '▶'}
+            {isPlaying ? "⏸" : "▶"}
           </span>
           <span className="font-cormorant text-rose-600/80 tracking-wider">
             Haz Clic para reproducir
@@ -161,8 +177,7 @@ export default function HeroSection() {
         {/* Versículo con estilo elegante */}
         <div className="max-w-2xl mx-auto mt-12 p-6 vintage-border rounded-lg bg-white/30 backdrop-blur-sm">
           <p className="font-cormorant text-lg md:text-xl text-rose-700/70 italic leading-relaxed tracking-wide">
-            "Señor, gracias por enviarnos a este ángel a nuestras vidas. 
-            Hoy lo consagramos a Ti para que guíes siempre sus pasos."
+            {`${"Señor, gracias por enviarnos a este ángel a nuestras vidas. Hoy lo consagramos a Ti para que guíes siempre sus pasos."}`}
           </p>
         </div>
 
@@ -174,5 +189,5 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,60 +1,63 @@
-'use client'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+"use client";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface FormConfirmation {
-  name: string, 
-  phone: string,
-  guests: number,
-  message: string
+  name: string;
+  phone: string;
+  guests: number;
+  message: string;
 }
 
 export default function ConfirmationForm() {
   const [formData, setFormData] = useState<FormConfirmation>({
-    name: '',
-    phone: '',
+    name: "",
+    phone: "",
     guests: 1,
-    message: ''
-  })
-  const [isSubmitted, setIsSubmitted] = useState(false)
+    message: "",
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    
-    setIsSubmitted(true)
-    try{
+    e.preventDefault();
 
-      const numeroWhatsApp = "5217531015765"; 
+    setIsSubmitted(true);
+    try {
+      const numeroWhatsApp = "527441778464";
       const mensaje = `Hola, mi nombre es ${formData.name} y confirmo mi asistencia al bautizo de Sofia Carolina.\nMi Teléfono: ${formData.phone}.\nMis Acompañantes: ${formData.guests}.\nMensaje: ${formData.message}.`;
-      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent( mensaje )}`; window.open(url, "_blank");
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
 
       setFormData({
-        name: '',
-        phone: '',
+        name: "",
+        phone: "",
         guests: 1,
-        message: ''
-      })
-
-    }catch(error){
-      setIsSubmitted(false)
-      console.error('Error al enviar el formulario:', error)
+        message: "",
+      });
+    } catch (error) {
+      setIsSubmitted(false);
+      console.error("Error al enviar el formulario:", error);
     }
-  }
+  };
 
   return (
     <section className="relative py-20 px-4 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#faf6f0] via-white to-[#faf6f0] paper-texture" />
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }} // se anima una vez al 20% visible
-        transition={{ duration: 0.6, ease: 'linear' }}
+        transition={{ duration: 0.6, ease: "linear" }}
         className=""
       >
         <div className="relative z-10 max-w-2xl mx-auto">
@@ -66,8 +69,8 @@ export default function ConfirmationForm() {
               Confirmación
             </p>
             <p className="font-cormorant text-lg text-rose-500/70 tracking-wide max-w-md mx-auto">
-              Será un honor contar con tu presencia. Agradeceremos tu confirmación 
-              para organizar todo con cariño.
+              Será un honor contar con tu presencia. Agradeceremos tu
+              confirmación para organizar todo con cariño.
             </p>
           </div>
 
@@ -103,7 +106,7 @@ export default function ConfirmationForm() {
                 </div> */}
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-1 gap-6">
                 <div>
                   <label className="block font-cormorant text-rose-600/80 mb-1.5 tracking-wide">
                     Teléfono
@@ -117,7 +120,7 @@ export default function ConfirmationForm() {
                     placeholder="Teléfono"
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label className="block font-cormorant text-rose-600/80 mb-1.5 tracking-wide">
                     Acompañantes
                   </label>
@@ -127,11 +130,13 @@ export default function ConfirmationForm() {
                     onChange={handleChange}
                     className="w-full px-4 py-2.5 bg-white/50 border border-rose-200/50 rounded-lg focus:ring-1 focus:ring-rose-400 focus:border-rose-400 outline-none transition-all duration-300 font-cormorant text-rose-700"
                   >
-                    {[1,2,3,4,5].map(num => (
-                      <option key={num} value={num}>{num}</option>
+                    {[1, 2, 3, 4, 5].map((num) => (
+                      <option key={num} value={num}>
+                        {num}
+                      </option>
                     ))}
                   </select>
-                </div>
+                </div> */}
               </div>
 
               <div>
@@ -188,8 +193,6 @@ export default function ConfirmationForm() {
           </div> */}
         </div>
       </motion.div>
-      
-      
     </section>
-  )
+  );
 }
