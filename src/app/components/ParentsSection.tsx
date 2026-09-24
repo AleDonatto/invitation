@@ -28,7 +28,7 @@ export default function ParentsSection() {
             </p>
             <p className="font-cormorant text-2xl text-rose-500/60">&amp;</p>
             <p className="font-cormorant text-3xl md:text-4xl text-rose-700/80 tracking-wide">
-              Angel Noe Felipe Rodriguez
+              Angel Noel Felipe Rodriguez
             </p>
 
             <div className="mt-10">
