@@ -33,7 +33,7 @@ export default function ConfirmationForm() {
     setIsSubmitted(true);
     try {
       const numeroWhatsApp = "527441778464";
-      const mensaje = `Hola, mi nombre es ${formData.name} y confirmo mi asistencia al bautizo de Sofia Carolina.\nMi Teléfono: ${formData.phone}.\nMis Acompañantes: ${formData.guests}.\nMensaje: ${formData.message}.`;
+      const mensaje = `Hola, mi nombre es ${formData.name} y confirmo mi asistencia al bautizo de Kayleenn Adilene.\nMi Teléfono: ${formData.phone}.\nMis Acompañantes: ${formData.guests}.\nMensaje: ${formData.message}.`;
       const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
       window.open(url, "_blank");
 
