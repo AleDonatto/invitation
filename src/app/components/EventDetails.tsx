@@ -12,11 +12,12 @@ export default function EventDetails() {
   const events = {
     church: {
       title: "Misa",
-      date: "Sabado 11 de Noviembre",
-      time: "12:00 p.m",
-      location: "Parroquia de Nuestra Señora de Guadalupe",
-      address: "Ejido Modelo",
-      url: "https://maps.app.goo.gl/JNmPPScBTeoyF4548?g_st=iw",
+      date: "Sabado 14 de Noviembre",
+      time: "04:00 p.m",
+      location: "Parroquia de Nuestra Señora del Perpetuo Socorro",
+      address:
+        "Calle 14 MZ 50, Zapata, Emiliano Zapata, 39700 Acapulco de Juárez, Gro.",
+      url: "https://maps.app.goo.gl/ZmSstrC22cyzAKUX6?g_st=iw",
     },
     reception: {
       title: "Recepción",
